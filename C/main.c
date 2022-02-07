@@ -27,30 +27,30 @@ int main(int argc, char **argv) {
 
 	result = fork();
         
-	//To-Do 1: Change the following condition so that it will execute on fork failure 
-	if (0) {
-		perror("Fork failed, exiting process without creating child process");
+	// (To-Do 1) Change the following condition so that it will execute on fork failure 
+	if (result < 0) {
+		perror("TO-DO1: Fork failed, exiting process without creating child process");
 		exit(1);
 	}
-	//To-Do 2: Change the following condition so that it will be executed by child process only
-	if (1) {
+	// (To-Do 2) Change the following condition so that it will be executed by child process only
+	if (result == 0) {
 
 		bytes_read = read(file_fd,buffer,16);
 		if(bytes_read>0){
-			printf("announcement with pid %d and FD %d : %s\n",getpid(),file_fd,buffer);
+			printf("To-Do2: announcement with pid %d and FD %d : %s\n",getpid(),file_fd,buffer);
 		}
 		else{
-			printf("Failed to read announcement with pid %d and FD %d\n",getpid(),file_fd);
+			printf("To-Do2: Failed to read announcement with pid %d and FD %d\n",getpid(),file_fd);
 
 		}
 		//close(file_fd);
 		
 		bytes_read = read(file_fd,buffer,16);
 		if(bytes_read>0){
-			printf("announcement with pid %d and FD %d : %s\n",getpid(),file_fd,buffer);
+			printf("To-Do2 (after): announcement with pid %d and FD %d : %s\n",getpid(),file_fd,buffer);
 		}
 		else{
-			printf("Failed to read announcement with pid %d and FD %d\n",getpid(),file_fd);
+			printf("To-Do2 (after): Failed to read announcement with pid %d and FD %d\n",getpid(),file_fd);
 
 		}
 
@@ -58,10 +58,10 @@ int main(int argc, char **argv) {
 		
 		bytes_read = read(file_fd,buffer,16);
 		if(bytes_read>0){
-			printf("announcement with pid %d and FD %d : %s\n",getpid(),file_fd,buffer);
+			printf("To-Do4: announcement with pid %d and FD %d : %s\n",getpid(),file_fd,buffer);
 		}
 		else{
-			printf("Failed to read announcement with pid %d and FD %d\n",getpid(),file_fd);
+			printf("To-Do4: Failed to read announcement with pid %d and FD %d\n",getpid(),file_fd);
 
 		}
 		
@@ -71,14 +71,15 @@ int main(int argc, char **argv) {
 	}
 	//To-Do 2.5: Make sure that else part is execute by parent process only
 	else {
+		printf("Result Number: %d\n", result);
 		//To-Do 3: Make sure that Child process has finished execution 
 		if(child_status == 0){	
 			bytes_read = read(file_fd,buffer,16);
 			if(bytes_read>0){
-				printf("announcement with pid %d and FD %d : %s\n",getpid(),file_fd,buffer);
+				printf("To-Do3: announcement with pid %d and FD %d : %s\n",getpid(),file_fd,buffer);
 			}
 			else{
-				printf("Failed to read announcement with pid %d and FD %d\n",getpid(),file_fd);
+				printf("To-Do3: Failed to read announcement with pid %d and FD %d\n",getpid(),file_fd);
 
 			}
 		}
